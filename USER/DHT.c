@@ -83,7 +83,7 @@ uint8_t DHT11_ReadByte(void){
     uint32_t timeout;
  
     for(i = 0; i < 8; i++){
-        // FIX 3: Timeout cho vong while cho LOW -> HIGH
+        //Timeout cho vong while cho LOW -> HIGH
         timeout = 100000;
         while(!GPIO_ReadInputDataBit(DHT11_GPIO, DHT11_PIN)){
             if(--timeout == 0) return 0;
@@ -95,7 +95,7 @@ uint8_t DHT11_ReadByte(void){
             data |= (1 << (7 - i));
         }
  
-        // FIX 4: Timeout cho vong while cho HIGH -> LOW
+        //Timeout cho vong while cho HIGH -> LOW
         timeout = 100000;
         while(GPIO_ReadInputDataBit(DHT11_GPIO, DHT11_PIN)){
             if(--timeout == 0) return 0;
@@ -114,7 +114,7 @@ uint8_t DHT11_ReadData(uint8_t *temp, uint8_t *hum){
         temp_dec = DHT11_ReadByte();
         checksum = DHT11_ReadByte();
  
-        // FIX 6: Kiem tra checksum
+        //Kiem tra checksum
         if(checksum == (uint8_t)(*hum + hum_dec + *temp + temp_dec)){
             return 1; // doc thanh cong
         }

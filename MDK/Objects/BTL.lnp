@@ -4,6 +4,7 @@
 ".\objects\delay.o"
 ".\objects\dht.o"
 ".\objects\mq2.o"
+".\objects\led.o"
 ".\objects\misc.o"
 ".\objects\stm32f10x_adc.o"
 ".\objects\stm32f10x_gpio.o"

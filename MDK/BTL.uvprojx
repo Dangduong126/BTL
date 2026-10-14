@@ -429,6 +429,16 @@
               <FileType>5</FileType>
               <FilePath>..\USER\mq2.h</FilePath>
             </File>
+            <File>
+              <FileName>led.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\USER\led.c</FilePath>
+            </File>
+            <File>
+              <FileName>led.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\USER\led.h</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
