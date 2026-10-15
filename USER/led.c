@@ -15,7 +15,7 @@ void Led_Config(void ){
 }
 
 void Led_On(void){
-	GPIO_ResetBits(LED_GPIO,LED_PIN);
+	GPIO_ResetBits(LED_GPIO,LED_PIN); // led on
 }
 
 void Led_Off(void){
