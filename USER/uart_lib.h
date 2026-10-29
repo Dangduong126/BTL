@@ -1,12 +1,3 @@
-/**
-  ******************************************************************************************
-  * @file    uart_lib.h                                                                    *
-  * @author  Duong Xuan Dang                                                               *
-  * @date    11/18/2025                                                                    *
-  * @brief   This file provides the necessary functions to program UART                    *
-  ******************************************************************************************
-**/
-
 #ifndef UART_LIB_H__
 #define UART_LIB_H__
 
