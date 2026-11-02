@@ -12,7 +12,7 @@
 
 uint8_t hum = 0;
 uint8_t temp = 0;
-uint8_t gas = 0;
+uint16_t gas = 0;
 char TX_string[100];
 
 extern volatile uint32_t g_mililis;
@@ -28,10 +28,10 @@ void UART_LED_Control(void){
 		if(c == '\n'){
 			cmd[index] = '\0';
 			if(strcmp(cmd,"LED_ON") == 0){
-				GPIO_ResetBits(LED_GPIO,LED_PIN);
+				Led_On();
 			}
 			else if(strcmp(cmd,"LED_OFF") == 0){
-				GPIO_SetBits(LED_GPIO,LED_PIN);
+				Led_Off();
 			}
 			index = 0;
 		}
@@ -48,6 +48,7 @@ int main(){
 	DHT11_Init();
 	Sys_Init();
 	ADC_MQ_Init();
+	Led_Config();
 	UART1_lib_Config(9600);
 	UART1_lib_send_string("STM32 System Start...\n");
 	
@@ -55,14 +56,11 @@ int main(){
 	
 	while(1){
 		UART_LED_Control();
-		int v = MQ_Read();
-		gas = v*3.3/4095;
-		
 		if(g_mililis - lastSensorTime >= 1000){
 			lastSensorTime = g_mililis;
 			
-			int v = MQ_Read();
-			gas = v*3.3/4095;
+			uint16_t v = MQ_Read();
+			gas = v;
 			
 			if((DHT11_ReadData(&temp, &hum)) == 1){
 				sprintf(TX_string,"T:%d,H:%d,G:%d\n",temp,hum,gas);

@@ -32,7 +32,7 @@ void ADC_MQ_Init(void){
 	while(ADC_GetCalibrationStatus(ADC_MQ));
 }
 
-uint8_t MQ_Read(void ){
+uint16_t MQ_Read(void ){
 	 ADC_RegularChannelConfig(ADC_MQ,ADC_MQ_Channel,1,ADC_SampleTime_55Cycles5);
 
     ADC_SoftwareStartConvCmd(ADC_MQ, ENABLE);
