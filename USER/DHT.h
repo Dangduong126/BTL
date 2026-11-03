@@ -1,8 +1,5 @@
 #ifndef __DHT_H__
 #define __DHT_H__
-#ifdef __cplusplus
- extern "C" {
-#endif
 
 #include "stm32f10x.h"
 
@@ -19,9 +16,5 @@ uint8_t DHT11_ReadData(uint8_t *temp, uint8_t *hum);
 
 void DHT11_delay(int time);
 void DHT11_delay_us(int time);
-
-#ifdef __cplusplus
-}
-#endif
 
 #endif
