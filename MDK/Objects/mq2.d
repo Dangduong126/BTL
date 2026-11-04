@@ -9,4 +9,5 @@
   C:\Users\MenMen\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.1.0\Device\StdPeriph_Driver\inc\stm32f10x_rcc.h \
   C:\Users\MenMen\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.1.0\Device\StdPeriph_Driver\inc\stm32f10x_tim.h \
   C:\Users\MenMen\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.1.0\Device\StdPeriph_Driver\inc\stm32f10x_usart.h \
-  C:\Users\MenMen\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.1.0\Device\StdPeriph_Driver\inc\misc.h
+  C:\Users\MenMen\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.1.0\Device\StdPeriph_Driver\inc\misc.h \
+  ..\USER\delay.h

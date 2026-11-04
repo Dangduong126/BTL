@@ -44,30 +44,37 @@ void UART_LED_Control(void){
 	}
 }
 
-int main(){
-	DHT11_Init();
-	Sys_Init();
-	ADC_MQ_Init();
-	Led_Config();
-	UART1_lib_Config(9600);
-	UART1_lib_send_string("STM32 System Start...\n");
-	
-	uint32_t lastSensorTime = g_mililis;
-	
-	while(1){
-		UART_LED_Control();
-		if(g_mililis - lastSensorTime >= 1000){
-			lastSensorTime = g_mililis;
-			
-			uint16_t v = MQ_Read();
-			gas = v;
-			
-			if((DHT11_ReadData(&temp, &hum)) == 1){
-				sprintf(TX_string,"T:%d,H:%d,G:%d\n",temp,hum,gas);
-				UART1_lib_send_string(TX_string);
-			} else {
-				UART1_lib_send_string("Loi: Khong doc duoc cam bien!\n");
-			}
-		}
-	}
+int main()
+{
+    DHT11_Init();
+    Sys_Init();
+    UART1_lib_Config(9600);
+    MQ2_Init();
+    Led_Config();
+
+    MQ2_Calibrate();
+
+    uint32_t lastSensorTime = g_mililis;
+
+    while(1)
+    {
+        UART_LED_Control();
+
+        if(g_mililis - lastSensorTime >= 1000)
+        {
+            lastSensorTime = g_mililis;
+
+            gas = MQ2_ReadPPM();
+
+            if(DHT11_ReadData(&temp, &hum) == 1)
+            {
+                sprintf(TX_string, "T:%d,H:%d,G:%u\n",temp, hum, gas);
+                UART1_lib_send_string(TX_string);
+            }
+            else
+            {
+                UART1_lib_send_string("DHT11 ERROR\n");
+            }
+        }
+    }
 }
